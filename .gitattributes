@@ -1,0 +1,8 @@
+composer.lock export-ignore
+composer.json export-ignore
+editor.sublime-project export-ignore
+formatter-test.php export-ignore
+phpcs.xml export-ignore
+pyproject.toml export-ignore
+requirements.txt export-ignore
+.editorconfig export-ignore
