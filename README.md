@@ -80,61 +80,67 @@ To override global plugin configuration for a specific project, add a settings o
 
 ```javascript
 {
-  // Simply using `php` without specifying a path sometimes doesn't work :(
-  // https://www.php.net/manual/en/install.php
-  // If these are false, we'll invoke the phpcbf binary directly.
-  "php_path": {
-    "windows": "php.exe",
-    "linux": "/usr/bin/php",
-    "osx": "/usr/local/bin/php",
-  },
+	// Simply using `php` without specifying a path sometimes doesn't work :(
+	// https://www.php.net/manual/en/install.php
+	// If these are false, we'll invoke the phpcbf binary directly.
+	"php_path": {
+		"windows": "php.exe",
+		"linux": "/usr/bin/php",
+		"osx": "/usr/local/bin/php",
+	},
 
-  // The location to search for a locally installed phpcbf package
-  // These are all relative paths to a project's directory
-  // If this is not found or are false, it will try to fallback to a global package
-  // (see "phpcbf_path" below)
-  "local_phpcbf_path": {
-    "windows": "vendor/bin/phpcbf",
-    "linux": "vendor/bin/phpcbf",
-    "osx": "vendor/bin/phpcbf",
-  },
+	/**
+	 * The virtualenv folder name
+	 * https://getcomposer.org/doc/03-cli.md#composer-vendor-dir
+	 */
+	"vendor_folder": "vendor",
 
-  // The location of the globally installed phpcbf package to use as a fallback
-  "phpcbf_path": {
-    "windows": "%APPDATA%/Roaming/Composer/vendor/bin/phpcbf",
-    "linux": "~/.composer/vendor/bin/phpcbf",
-    "osx": "~/.composer/vendor/bin/phpcbf",
-  },
+	// The location to search for a locally installed phpcbf package
+	// These are all relative paths to a project's directory
+	// If this is not found or are false, it will try to fallback to a global package
+	// (see "phpcbf_path" below)
+	"local_phpcbf_path": {
+		"windows": "${project_path}/${vendor_folder}/bin/phpcbf",
+		"linux": "${project_path}/${vendor_folder}/bin/phpcbf",
+		"osx": "${project_path}/${vendor_folder}/bin/phpcbf",
+	},
 
-  // Specify this path to an phpcbf standard file to override the default behavior
-  // Passed to phpcbf as --standard. Read more here:
-  // https://github.com/squizlabs/PHP_CodeSniffer/wiki/Configuration-Options
-  // If an absolute path is provided, it will use as is.
-  // Failing either, it will skip the standard file
-  "config_path": "",
+	// The location of the globally installed phpcbf package to use as a fallback
+	"phpcbf_path": {
+		"windows": "%APPDATA%/Roaming/Composer/${vendor_folder}/bin/phpcbf",
+		"linux": "~/.composer/${vendor_folder}/bin/phpcbf",
+		"osx": "~/.composer/${vendor_folder}/bin/phpcbf",
+	},
 
-  // Pass additional arguments to phpcbf.
-  // Read more here: https://cs.symfony.com/doc/usage.html
-  // Please note that "-v | -vv | -vvv | -q" args will be edited (see `debug` below)
-  "extra_args": [
-    "-l",
-  ],
+	// Specify this path to an phpcbf standard file to override the default behavior
+	// Passed to phpcbf as --standard. Read more here:
+	// https://github.com/squizlabs/PHP_CodeSniffer/wiki/Configuration-Options
+	// If an absolute path is provided, it will use as is.
+	// Failing either, it will skip the standard file
+	"config_path": "",
 
-  // Automatically format when a file is saved
-  "format_on_save": false,
+	// Pass additional arguments to phpcbf.
+	// Read more here: https://cs.symfony.com/doc/usage.html
+	// Please note that "-v | -vv | -vvv | -q" args will be edited (see `debug` below)
+	"extra_args": [
+		"-l",
+	],
 
-  // Only attempt to format files with whitelisted extensions on save.
-  // Leave empty to disable the check
-  "format_on_save_extensions": [ "php" ],
+	// Automatically format when a file is saved
+	"format_on_save": false,
 
-  // Logs phpcbf output messages to console when set to true
-  // `extra_args` will be edited as below if `debug` set to:
-  //   - `false`:
-  //     - "-v | -vv | -vvv" will be removed
-  //     - "-q" will be added
-  //   - `true`:
-  //     - "-q" will be removed
-  //     - "-vvv" will be added
-  "debug": false,
+	// Only attempt to format files with whitelisted extensions on save.
+	// Leave empty to disable the check
+	"format_on_save_extensions": [ "php" ],
+
+	// Logs phpcbf output messages to console when set to true
+	// `extra_args` will be edited as below if `debug` set to:
+	// 	- `false`:
+	// 		- "-v | -vv | -vvv" will be removed
+	// 		- "-q" will be added
+	// 	- `true`:
+	// 		- "-q" will be removed
+	// 		- "-vvv" will be added
+	"debug": false,
 }
 ```
