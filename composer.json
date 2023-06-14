@@ -1,0 +1,17 @@
+{
+    "name": "shafiq/phpcbf-formatter",
+    "autoload": {
+        "psr-4": {
+            "Shafiq\\PhpcbfFormatter\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Shafiq Tahir",
+            "email": "shafiqtahir.khan@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "squizlabs/php_codesniffer": "*"
+    }
+}
