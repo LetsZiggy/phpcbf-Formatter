@@ -8,21 +8,27 @@
 		"osx": "/usr/local/bin/php",
 	},
 
+	/**
+	 * The virtualenv folder name
+	 * https://getcomposer.org/doc/03-cli.md#composer-vendor-dir
+	 */
+	"vendor_folder": "vendor",
+
 	// The location to search for a locally installed phpcbf package
 	// These are all relative paths to a project's directory
 	// If this is not found or are false, it will try to fallback to a global package
 	// (see "phpcbf_path" below)
 	"local_phpcbf_path": {
-		"windows": "vendor/bin/phpcbf",
-		"linux": "vendor/bin/phpcbf",
-		"osx": "vendor/bin/phpcbf",
+		"windows": "${project_path}/${vendor_folder}/bin/phpcbf",
+		"linux": "${project_path}/${vendor_folder}/bin/phpcbf",
+		"osx": "${project_path}/${vendor_folder}/bin/phpcbf",
 	},
 
 	// The location of the globally installed phpcbf package to use as a fallback
 	"phpcbf_path": {
-		"windows": "%APPDATA%/Roaming/Composer/vendor/bin/phpcbf",
-		"linux": "~/.composer/vendor/bin/phpcbf",
-		"osx": "~/.composer/vendor/bin/phpcbf",
+		"windows": "%APPDATA%/Roaming/Composer/${vendor_folder}/bin/phpcbf",
+		"linux": "~/.composer/${vendor_folder}/bin/phpcbf",
+		"osx": "~/.composer/${vendor_folder}/bin/phpcbf",
 	},
 
 	// Specify this path to an phpcbf standard file to override the default behavior

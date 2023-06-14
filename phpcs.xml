@@ -1,0 +1,298 @@
+<?xml version="1.0"?>
+
+<ruleset name="PHP_CodeSniffer">
+	<description>PHPCS configuration file</description>
+
+	<!--
+		check all files in the directory, feel free to add more files with:
+			- <file>[./path/to/directory]</file>
+	-->
+	<!-- <file>/* ... */</file> -->
+
+	<!--
+		exclude directory from the violation check with:
+			- <exclude-pattern>[./path/to/directory]/*</exclude-pattern>
+			- <exclude-pattern>*/[./path/to/directory]/*</exclude-pattern>
+			- <exclude-pattern type="relative">^/[./path/to/directory]/*</exclude-pattern>
+	-->
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+
+	<!-- Command-line arguments -->
+
+	<!-- <config name="installed_paths" value="vendor/wp-coding-standards/wpcs" /> -->
+
+	<!-- <arg name="standard" value="" /> -->
+	<!-- <arg name="report" value="" /> -->
+	<!-- <arg name="severity" value="" /> -->
+	<!-- <arg name="warning-severity" value="" /> -->
+	<!-- <arg name="error-severity" value="" /> -->
+	<!-- <arg name="report-width" value="" /> -->
+	<arg name="encoding" value="UTF-8" />
+	<arg name="tab-width" value="2" />
+
+	<!-- Generic Sniffs -->
+
+	<rule ref="Generic">
+		<exclude name="Generic.Files.EndFileNoNewline.Found" />
+		<exclude name="Generic.Functions.OpeningFunctionBraceBsdAllman.BraceOnSameLine" />
+		<exclude name="Generic.PHP.ClosingPHPTag.NotFound" />
+		<exclude name="Generic.WhiteSpace.ArbitraryParenthesesSpacing.SpaceAfterOpen" />
+		<exclude name="Generic.WhiteSpace.ArbitraryParenthesesSpacing.SpaceBeforeClose" />
+		<exclude name="Generic.WhiteSpace.DisallowTabIndent.TabsUsed" />
+		<!-- <exclude name="_Generic.WhiteSpace.DisallowSpaceIndent.SpacesUsed" /> -->
+	</rule>
+
+	<rule ref="Generic.Arrays.ArrayIndent">
+		<properties>
+			<property name="indent" value="2" />
+		</properties>
+	</rule>
+
+	<rule ref="Generic.Files.LineLength">
+		<properties>
+			<property name="absoluteLineLimit" value="0" />
+			<property name="ignoreComments" value="false" />
+			<property name="lineLimit" value="120" />
+		</properties>
+	</rule>
+
+	<rule ref="Generic.Formatting.MultipleStatementAlignment">
+		<properties>
+			<property name="alignAtEnd" value="false" />
+			<property name="error" value="false" />
+			<property name="maxPadding" value="0" />
+		</properties>
+	</rule>
+
+	<rule ref="Generic.Formatting.SpaceAfterCast">
+		<properties>
+			<property name="ignoreNewlines" value="false" />
+			<property name="spacing" value="1" />
+		</properties>
+	</rule>
+
+	<rule ref="Generic.Formatting.SpaceAfterNot">
+		<properties>
+			<property name="ignoreNewlines" value="false" />
+			<property name="spacing" value="0" />
+		</properties>
+	</rule>
+
+	<rule ref="Generic.Functions.OpeningFunctionBraceKernighanRitchie">
+		<properties>
+			<property name="checkFunctions" value="true" />
+			<property name="checkClosures" value="true" />
+		</properties>
+	</rule>
+
+	<rule ref="Generic.WhiteSpace.ScopeIndent">
+		<properties>
+			<property name="exact" value="false" />
+			<!-- <property name="_ignoreIndentationTokens" type="array">
+				<element value="" />
+			</property> -->
+			<property name="indent" value="2" />
+			<property name="tabIndent" value="true" />
+		</properties>
+	</rule>
+
+	<!-- PEAR Sniffs -->
+
+	<rule ref="PEAR">
+		<exclude name="PEAR.Classes.ClassDeclaration.OpenBraceNewLine" />
+		<exclude name="PEAR.ControlStructures.ControlSignature.Found" />
+		<exclude name="PEAR.Functions.FunctionCallSignature.SpaceAfterOpenBracket" />
+		<exclude name="PEAR.Functions.FunctionCallSignature.SpaceBeforeCloseBracket" />
+		<exclude name="PEAR.Functions.FunctionDeclaration.BraceOnSameLine" />
+		<exclude name="PEAR.Functions.FunctionDeclaration.SpaceBeforeOpenParen" />
+	</rule>
+
+	<rule ref="PEAR.ControlStructures.MultiLineCondition">
+		<properties>
+			<property name="indent" value="2" />
+		</properties>
+	</rule>
+
+	<rule ref="PEAR.Formatting.MultiLineAssignment">
+		<properties>
+			<property name="indent" value="2" />
+		</properties>
+	</rule>
+
+	<rule ref="PEAR.Functions.FunctionCallSignature">
+		<properties>
+			<property name="allowMultipleArguments" value="true" />
+			<property name="indent" value="2" />
+			<property name="requiredSpacesAfterOpen" value="0" />
+			<property name="requiredSpacesBeforeClose" value="0" />
+		</properties>
+	</rule>
+
+	<rule ref="PEAR.Functions.FunctionDeclaration">
+		<properties>
+			<property name="indent" value="2" />
+		</properties>
+	</rule>
+
+	<rule ref="PEAR.WhiteSpace.ObjectOperatorIndent">
+		<properties>
+			<property name="indent" value="2" />
+			<property name="multilevel" value="true" />
+		</properties>
+	</rule>
+
+	<rule ref="PEAR.WhiteSpace.ScopeClosingBrace">
+		<properties>
+			<property name="indent" value="2" />
+		</properties>
+	</rule>
+
+	<rule ref="PEAR.WhiteSpace.ScopeIndent">
+		<properties>
+			<property name="exact" value="false" />
+			<!-- <property name="_ignoreIndentationTokens" type="array">
+				<element value="" />
+			</property> -->
+			<property name="indent" value="2" />
+			<property name="tabIndent" value="true" />
+		</properties>
+	</rule>
+
+	<!-- PSR2 -->
+
+	<!-- <rule ref="_PSR2">
+	</rule> -->
+
+	<!-- <rule ref="_PSR2.Classes.ClassDeclaration">
+		<properties>
+			<property name="indent" value="2" />
+		</properties>
+	</rule> -->
+
+	<!-- <rule ref="_PSR2.ControlStructures.SwitchDeclaration">
+		<properties>
+			<property name="indent" value="2" />
+		</properties>
+	</rule> -->
+
+	<!-- <rule ref="_PSR2.Methods.FunctionCallSignature">
+		<properties>
+			<property name="allowMultipleArguments" value="true" />
+			<property name="indent" value="2" />
+			<property name="requiredSpacesAfterOpen" value="0" />
+			<property name="requiredSpacesBeforeClose" value="0" />
+		</properties>
+	</rule> -->
+
+	<!-- PSR12 -->
+
+	<!-- <rule ref="_PSR12">
+</rule> -->
+
+	<!-- <rule ref="_PSR12.Classes.AnonClassDeclaration">
+		<properties>
+			<property name="indent" value="2" />
+		</properties>
+	</rule> -->
+
+	<!-- <rule ref="_PSR12.ControlStructures.ControlStructureSpacing">
+		<properties>
+			<property name="indent" value="2" />
+		</properties>
+	</rule> -->
+
+	<!-- <rule ref="_PSR12.Operators.OperatorSpacing">
+		<properties>
+			<property name="ignoreNewlines" value="true" />
+			<property name="ignoreSpacingBeforeAssignments" value="true" />
+		</properties>
+	</rule> -->
+
+	<!-- Squiz Sniffs -->
+
+	<rule ref="Squiz">
+		<exclude name="Squiz.Classes.ClassDeclaration.OpenBraceNewLine" />
+		<exclude name="Squiz.ControlStructures.ControlSignature.SpaceAfterCloseBrace" />
+		<exclude name="Squiz.ControlStructures.ElseIfDeclaration.NotAllowed" />
+		<exclude name="Squiz.ControlStructures.InlineIfDeclaration.NotSingleLine" />
+		<exclude name="Squiz.Files.FileExtension.ClassFound" />
+		<exclude name="Squiz.Functions.GlobalFunction.Found" />
+		<exclude name="Squiz.Functions.MultiLineFunctionDeclaration.BraceOnSameLine" />
+		<exclude name="Squiz.Operators.ComparisonOperatorUsage.NotAllowed" />
+		<exclude name="Squiz.PHP.CommentedOutCode.Found" />
+		<exclude name="Squiz.PHP.DisallowInlineIf.Found" />
+		<exclude name="Squiz.WhiteSpace.FunctionClosingBraceSpace.SpacingBeforeClose" />
+	</rule>
+
+	<rule ref="Squiz.Classes.ClassDeclaration">
+		<properties>
+			<property name="indent" value="2" />
+		</properties>
+	</rule>
+
+	<rule ref="Squiz.ControlStructures.ControlSignature">
+		<properties>
+			<property name="requiredSpacesBeforeColon" value="0" />
+		</properties>
+	</rule>
+
+	<rule ref="Squiz.ControlStructures.SwitchDeclaration">
+		<properties>
+			<property name="indent" value="2" />
+		</properties>
+	</rule>
+
+	<rule ref="Squiz.CSS.Indentation">
+		<properties>
+			<property name="indent" value="2" />
+		</properties>
+	</rule>
+
+	<rule ref="Squiz.Functions.FunctionDeclarationArgumentSpacing">
+		<properties>
+			<property name="equalsSpacing" value="1" />
+			<property name="requiredSpacesAfterOpen" value="0" />
+			<property name="requiredSpacesBeforeClose" value="0" />
+		</properties>
+	</rule>
+
+	<rule ref="Squiz.Strings.ConcatenationSpacing">
+		<properties>
+			<property name="ignoreNewlines" value="false" />
+			<property name="spacing" value="1" />
+		</properties>
+	</rule>
+
+	<rule ref="Squiz.WhiteSpace.FunctionSpacing">
+		<properties>
+			<property name="spacing" value="1" />
+			<property name="spacingBeforeFirst" value="0" />
+			<property name="spacingAfterLast" value="0" />
+		</properties>
+	</rule>
+
+	<rule ref="Squiz.WhiteSpace.MemberVarSpacing">
+		<properties>
+			<property name="spacing" value="1" />
+			<property name="spacingBeforeFirst" value="0" />
+		</properties>
+	</rule>
+
+	<rule ref="Squiz.WhiteSpace.ObjectOperatorSpacing">
+		<properties>
+			<property name="ignoreNewlines" value="true" />
+		</properties>
+	</rule>
+
+	<rule ref="Squiz.WhiteSpace.OperatorSpacing">
+		<properties>
+			<property name="ignoreNewlines" value="true" />
+			<property name="ignoreSpacingBeforeAssignments" value="true" />
+		</properties>
+	</rule>
+
+	<!-- WordPress -->
+
+	<!-- <rule ref="WordPress">
+	</rule> -->
+</ruleset>
